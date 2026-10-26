@@ -1,0 +1,22 @@
+{
+  "name": "edgerunners-theme",
+  "displayName": "Edgerunners",
+  "description": "Edgerunners dark theme: Night City neon after rain, with One Monokai-style syntax",
+  "version": "1.0.0",
+  "publisher": "ohmylucifer",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Edgerunners",
+        "uiTheme": "vs-dark",
+        "path": "./edgerunners-color-theme.json"
+      }
+    ]
+  }
+}

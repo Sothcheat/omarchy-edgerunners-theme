@@ -1,0 +1,161 @@
+/* Edgerunners for Zen Browser. Copied into each Zen profile as
+ * chrome/omarchy-theme.css by the theme-set hook
+ * (~/.config/omarchy/hooks/theme-set.d/zen-theme) and loaded from
+ * userChrome.css. Zen's own workspace gradient sets several of these from
+ * script, hence !important. Restart Zen after a theme change.
+ *
+ * Midnight indigo surfaces, lavender text, Lucy cyan for focus and selection (the
+ * neon red stays for warnings, as everywhere else in the theme).
+ */
+:root {
+  --zen-primary-color: #05a5bf !important;
+  --zen-branding-bg: #0b0c24 !important;
+  --zen-branding-bg-reverse: #ddddf7 !important;
+
+  /* The frame around web pages, the sidebar and the compact toolbar. */
+  --zen-main-browser-background: #06071a !important;
+  --zen-main-browser-background-toolbar: #06071a !important;
+  --zen-themed-toolbar-bg-transparent: #06071a !important;
+  --toolbox-textcolor: #ddddf7 !important;
+  --toolbar-color: #ddddf7 !important;
+  --toolbar-color-scheme: dark !important;
+
+  --zen-colors-primary: #003a56 !important;
+  --zen-colors-secondary: #004362 !important;
+  --zen-colors-tertiary: #0b0c24 !important;
+  --zen-colors-hover-bg: #01293e !important;
+  --zen-colors-primary-foreground: #03d1ea !important;
+  --zen-colors-border: #1e2040 !important;
+  --zen-colors-border-contrast: #1e2040 !important;
+  --zen-colors-input-bg: #0b0c24 !important;
+  --zen-input-border-color: #1e2040 !important;
+
+  /* URL bar, popups, dialogs. */
+  --zen-urlbar-background: #151635 !important;
+  --toolbar-field-background-color: #151635 !important;
+  --toolbar-field-focus-background-color: #0b0c24 !important;
+  --toolbar-field-color: #ddddf7 !important;
+  --toolbar-field-focus-color: #f2f2fe !important;
+  --zen-dialog-background: #151635 !important;
+  --arrowpanel-background: #151635 !important;
+  --arrowpanel-color: #ddddf7 !important;
+  --arrowpanel-border-color: #1e2040 !important;
+  --panel-separator-color: #1e2040 !important;
+
+  /* Tabs: the selected one sits in the theme's cyan selection. */
+  --tab-background-color-selected: #003a56 !important;
+  --tab-background-color-hover: #01293e !important;
+  --tab-selected-textcolor: #f2f2fe !important;
+  --toolbarbutton-background-color-hover: #01293e !important;
+  --toolbarbutton-background-color-active: #003a56 !important;
+
+  --focus-outline-color: #05a5bf !important;
+  --zen-sidebar-themed-icon-fill: #a0a2c1 !important;
+  --attention-dot-color: #fe5f7e !important;
+
+  /* Primary buttons: Lucy cyan with indigo text (6.5:1). The text stays dark
+   * because dialogs (default-browser prompt, confirmations) live in their
+   * own document, where Zen paints the primary button light grey and
+   * userChrome.css can't reach the button; dark text reads on both. */
+  --in-content-primary-button-background: #05a5bf !important;
+  --in-content-primary-button-background-hover: #1cbdd9 !important;
+  --in-content-primary-button-background-active: #028397 !important;
+  --in-content-primary-button-text-color: #0b0c24 !important;
+  --button-text-color-primary: #0b0c24 !important;
+  --link-color: #05a5bf !important;
+  --link-color-hover: #03d1ea !important;
+}
+
+/* Selected text in the URL bar and fields. */
+#urlbar ::selection,
+.urlbar-input::selection {
+  background-color: #003a56 !important;
+  color: #f2f2fe !important;
+}
+
+/* Zen paints the window frame from its workspace gradient, set inline on
+ * these elements, so the variables are pinned here rather than on :root. */
+.zen-browser-generic-background {
+  --zen-main-browser-background: #06071a !important;
+  --zen-main-browser-background-toolbar: #06071a !important;
+  --zen-main-browser-background-old: #06071a !important;
+  --zen-main-browser-background-toolbar-old: #06071a !important;
+  --zen-background-opacity: 1 !important;
+}
+
+.tabbrowser-tab {
+  --tab-background-color-selected: #003a56 !important;
+}
+
+.tabbrowser-tab:not([zen-essential="true"]):is([selected], [visuallyselected], [multiselected="true"]) > .tab-stack > .tab-background {
+  background: #003a56 !important;
+}
+
+.tabbrowser-tab:not([zen-essential="true"]):hover:not([selected], [visuallyselected], [multiselected="true"]) > .tab-stack > .tab-background {
+  background: #01293e !important;
+}
+
+/* Controls sitting on the sidebar (the URL bar, essential tiles) get a raised
+ * indigo fill with a haze edge, 2.6:1 against the sidebar, instead of Zen's
+ * text-tinted wash, which all but vanished on the dark indigo. */
+:root {
+  --zen-toolbar-element-bg: #1b1d40 !important;
+  --zen-toolbar-element-bg-hover: #272950 !important;
+}
+
+/* Sidebar URL bar. */
+#urlbar:not([breakout-extend]) .urlbar-background {
+  background: #1b1d40 !important;
+  border: 1px solid #494d7d !important;
+}
+#urlbar:not([breakout-extend]):hover .urlbar-background {
+  background: #272950 !important;
+}
+#urlbar .urlbar-input {
+  color: #ddddf7 !important;
+}
+#urlbar .urlbar-input::placeholder {
+  color: #898eb6 !important;
+  opacity: 1 !important;
+}
+
+/* Floating URL bar (the search box over a new tab). */
+#urlbar .urlbar-background {
+  --zen-urlbar-background-base: #151635 !important;
+  --zen-urlbar-background-transparent: rgba(21, 22, 53, 0.97) !important;
+}
+#urlbar[breakout-extend] .urlbar-background {
+  outline: 1px solid #494d7d !important;
+}
+#urlbar[breakout-extend][focused="true"] .urlbar-background {
+  outline-color: #0bafd7 !important;
+}
+
+/* Essentials: tiles on the raised fill; the open one in cyan. */
+.tabbrowser-tab[zen-essential="true"] {
+  --zen-essential-tab-selected-bg: #014363 !important;
+  --zen-essential-tab-selected-bg-hover: #0a4f71 !important;
+}
+.tabbrowser-tab[zen-essential="true"]:not([visuallyselected], [multiselected="true"]) > .tab-stack > .tab-background {
+  background: #1b1d40 !important;
+  box-shadow: inset 0 0 0 1px #494d7d !important;
+}
+.tabbrowser-tab[zen-essential="true"]:hover:not([visuallyselected], [multiselected="true"]) > .tab-stack > .tab-background {
+  background: #272950 !important;
+}
+.tabbrowser-tab[zen-essential="true"]:is([visuallyselected], [multiselected="true"]) > .tab-stack > .tab-background {
+  box-shadow: inset 0 0 0 1px #0bafd7 !important;
+}
+
+/* While the URL bar floats over the page, the sidebar keeps an empty
+ * placeholder where it was; draw it like the bar itself. */
+#urlbar-container:has(#urlbar[open][zen-floating-urlbar="true"]) {
+  background: #1b1d40 !important;
+  box-shadow: inset 0 0 0 1px #494d7d !important;
+}
+
+/* The floating bar and its results: solid, so the page doesn't show through. */
+#urlbar[breakout-extend] .urlbar-background {
+  background-color: #151635 !important;
+  backdrop-filter: none !important;
+}

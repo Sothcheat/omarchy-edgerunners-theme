@@ -1,0 +1,62 @@
+# Edgerunners — a dark theme drawn from Cyberpunk: Edgerunners: Night City
+# after rain, neon signs bleeding through a wet window, Lucy's pale hair lit
+# cyan on one side and magenta on the other, the hot pink-red of the show's
+# key art, and a rocket climbing toward the moon on a line of yellow fire.
+#
+# Surfaces are the midnight indigo of the night skies, sampled at #0C0C21
+# and #020D32, kept violet-blue rather than neutral. Text is the lavender
+# white of Lucy's hair highlights. The two neons split the work: Lucy cyan
+# for selection and focus, the pink-red for the accent, alerts and errors.
+#
+# Hues sampled from the wallpapers: key-art pink-red #F90251 (red), HOTEL
+# sign neon #F48A6E (orange), rocket flare #C0CB3A and Cyberpunk's own
+# #F3E600 (yellow, bright yellow), Lucy cyan #34C2E5 (cyan), Lucy blue
+# #5C9BFA (blue), neon violet #BF59D0 / #EF88DF (magenta), bottle glass and
+# street wood #886A3E (brown), rain haze #57649D (muted). The scenes have no
+# green, so green is an acid green set well away from the cyan.
+#
+# Lightness is solved in OKLCH against `lighter_background`, the lightest
+# surface any colour lands on, taking the darkest value that clears the
+# target so colours stay rich. Every ANSI colour clears 6.0:1 (brown, kept
+# dim on purpose, 4.6:1; yellow 7.5:1, since a darker yellow turns olive),
+# bright variants clear 9.5:1, and foregrounds run 7.1:1 to 15.9:1. No two
+# different hues are closer than 15.4 CIEDE2000, and each bright sits 11+
+# from its normal, so nothing blends into a neighbour.
+mode = "dark"
+
+accent = "#FE5F7E"
+selection = "#003A56"
+muted = "#717AAA"
+
+# Window borders: the focused window runs from Lucy cyan (#0BAFD7, 7.4:1 on
+# the background) into the violet-magenta of her rim light (#BC48DD, 4.7:1),
+# a neon edge like the show's line art. The rest get dim indigo. The
+# pink-red stays for the bar and alerts.
+hyprland_active_border = "rgb(0bafd7) rgb(bc48dd) 45deg"
+hyprland_inactive_border = "rgba(2b2d4faa)"
+
+background = "#0B0C24"
+dark_background = "#06071A"
+darker_background = "#030310"
+lighter_background = "#141534"
+
+foreground = "#DDDDF7"
+dark_foreground = "#A0A2C1"
+light_foreground = "#C3C4E1"
+bright_foreground = "#F2F2FE"
+
+red = "#FE5F7E"
+yellow = "#CBA501"
+orange = "#ED734D"
+green = "#06AE46"
+cyan = "#05A5BF"
+blue = "#5A96F9"
+magenta = "#D869EA"
+brown = "#A37A52"
+
+bright_red = "#FEA6BE"
+bright_yellow = "#F1E607"
+bright_green = "#41D968"
+bright_cyan = "#03D1EA"
+bright_blue = "#9CBFFE"
+bright_magenta = "#F5A1F9"

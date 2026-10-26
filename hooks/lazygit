@@ -1,0 +1,13 @@
+#!/bin/bash
+# Give lazygit the current theme's colours. A theme that ships lazygit.yml
+# gets it; any other theme gets an empty file, so lazygit falls back to its
+# defaults. lazygit merges this over config.yml through LG_CONFIG_FILE (set in
+# ~/.config/uwsm/env and ~/.bashrc).
+src="$HOME/.local/state/omarchy/current/theme/lazygit.yml"
+dest="$HOME/.config/lazygit/theme.yml"
+mkdir -p "${dest%/*}"
+if [[ -f $src ]]; then
+  cp "$src" "$dest"
+else
+  echo "# Current theme ships no lazygit.yml" >"$dest"
+fi

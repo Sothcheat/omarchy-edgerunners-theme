@@ -1,0 +1,28 @@
+#!/bin/bash
+# Give Zen the current theme's chrome colours: the theme's zen.css if it ships
+# one, otherwise an empty file so Zen falls back to its own look. Written to
+# every Zen profile as chrome/omarchy-theme.css, which userChrome.css imports;
+# user.js turns on userChrome.css support. Zen reads it at startup.
+zen_dir="$HOME/.config/zen"
+[[ -f $zen_dir/profiles.ini ]] || exit 0
+src="$HOME/.local/state/omarchy/current/theme/zen.css"
+import='@import url("omarchy-theme.css");'
+pref='user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+
+grep '^Path=' "$zen_dir/profiles.ini" | cut -d= -f2- | while IFS= read -r rel; do
+  profile="$zen_dir/$rel"
+  [[ -d $profile ]] || continue
+  mkdir -p "$profile/chrome"
+  if [[ -f $src ]]; then
+    cp "$src" "$profile/chrome/omarchy-theme.css"
+  else
+    echo "/* Current Omarchy theme ships no zen.css */" >"$profile/chrome/omarchy-theme.css"
+  fi
+  user_chrome="$profile/chrome/userChrome.css"
+  if ! grep -qxF "$import" "$user_chrome" 2>/dev/null; then
+    # @import must come first in a stylesheet.
+    { echo "$import"; [[ -f $user_chrome ]] && cat "$user_chrome"; } >"$user_chrome.new"
+    mv "$user_chrome.new" "$user_chrome"
+  fi
+  grep -qxF "$pref" "$profile/user.js" 2>/dev/null || echo "$pref" >>"$profile/user.js"
+done

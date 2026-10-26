@@ -1,0 +1,8 @@
+#!/bin/bash
+# Set the libadwaita accent (Nautilus and other GTK4 apps) from the current
+# theme's gtk-accent.theme: one of blue, teal, green, yellow, orange, red,
+# pink, purple, slate. Themes without one get GNOME's default, blue.
+file="$HOME/.local/state/omarchy/current/theme/gtk-accent.theme"
+accent=blue
+[[ -f $file ]] && accent=$(tr -d '[:space:]' <"$file")
+gsettings set org.gnome.desktop.interface accent-color "$accent"

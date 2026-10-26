@@ -1,0 +1,11 @@
+#!/bin/bash
+# Point fastfetch at the current theme's logo: its fastfetch-logo.txt if it
+# ships one, otherwise Omarchy's logo in colour 3 (green, as Omarchy has it).
+theme_logo="$HOME/.local/state/omarchy/current/theme/fastfetch-logo.txt"
+dest="$HOME/.config/fastfetch/logo.txt"
+mkdir -p "${dest%/*}"
+if [[ -f $theme_logo ]]; then
+  cp "$theme_logo" "$dest"
+else
+  { printf '$3'; cat "$HOME/.config/omarchy/branding/about.txt"; } >"$dest"
+fi

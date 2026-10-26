@@ -1,0 +1,60 @@
+# Edgerunners btop theme. Box outlines are dimmed palette colours (each
+# 3.5:1+ on the background) so panels stay apart without glaring; graphs run
+# the neon from cool to warm, Lucy cyan to the key-art pink-red.
+
+theme[main_bg]="#0B0C24"
+theme[main_fg]="#DDDDF7"
+theme[title]="#F2F2FE"
+theme[hi_fg]="#FE5F7E"
+theme[selected_bg]="#003A56"
+theme[selected_fg]="#F2F2FE"
+theme[inactive_fg]="#717AAA"
+theme[graph_text]="#C3C4E1"
+theme[meter_bg]="#141534"
+theme[proc_misc]="#05A5BF"
+
+# Panel outlines: Lucy cyan, neon violet, Lucy blue, bottle glass.
+theme[cpu_box]="#028397"
+theme[mem_box]="#BC48DD"
+theme[net_box]="#4776C3"
+theme[proc_box]="#896A4B"
+theme[div_line]="#353961"
+
+# Temperature: cool cyan, rocket flare, neon red.
+theme[temp_start]="#05A5BF"
+theme[temp_mid]="#F1E607"
+theme[temp_end]="#FE5F7E"
+
+# CPU: Lucy cyan, neon pink, neon red.
+theme[cpu_start]="#05A5BF"
+theme[cpu_mid]="#E77F97"
+theme[cpu_end]="#FE5F7E"
+
+theme[free_start]="#06AE46"
+theme[free_mid]="#05A5BF"
+theme[free_end]="#03D1EA"
+
+theme[cached_start]="#4776C3"
+theme[cached_mid]="#5A96F9"
+theme[cached_end]="#9CBFFE"
+
+theme[available_start]="#CBA501"
+theme[available_mid]="#ED734D"
+theme[available_end]="#F1E607"
+
+theme[used_start]="#BC48DD"
+theme[used_mid]="#D869EA"
+theme[used_end]="#FE5F7E"
+
+# Network: down is Lucy cyan, up is the violet rising.
+theme[download_start]="#028397"
+theme[download_mid]="#05A5BF"
+theme[download_end]="#03D1EA"
+
+theme[upload_start]="#BC48DD"
+theme[upload_mid]="#D869EA"
+theme[upload_end]="#F5A1F9"
+
+theme[process_start]="#05A5BF"
+theme[process_mid]="#E77F97"
+theme[process_end]="#FE5F7E"

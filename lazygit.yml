@@ -1,0 +1,40 @@
+# Edgerunners lazygit colours. Copied to ~/.config/lazygit/theme.yml by the
+# theme-set hook (~/.config/omarchy/hooks/theme-set.d/lazygit), which lazygit
+# reads through LG_CONFIG_FILE.
+gui:
+  theme:
+    # The focused panel takes the Lucy cyan of the window border; the rest
+    # sit in rain haze, still visible (3:1) but clearly behind.
+    activeBorderColor:
+      - "#05A5BF"
+      - bold
+    inactiveBorderColor:
+      - "#585C88"
+    searchingActiveBorderColor:
+      - "#F1E607"
+      - bold
+    optionsTextColor:
+      - "#5A96F9"
+    selectedLineBgColor:
+      - "#003A56"
+    inactiveViewSelectedLineBgColor:
+      - "#141534"
+    cherryPickedCommitFgColor:
+      - "#0B0C24"
+    cherryPickedCommitBgColor:
+      - "#05A5BF"
+    markedBaseCommitFgColor:
+      - "#0B0C24"
+    markedBaseCommitBgColor:
+      - "#F1E607"
+    unstagedChangesColor:
+      - "#FE5F7E"
+    defaultFgColor:
+      - "#DDDDF7"
+  authorColors:
+    "*": "#D869EA"
+  branchColorPatterns:
+    "^(main|master)$": "#05A5BF"
+    "^(feat|feature)/": "#06AE46"
+    "^(fix|hotfix)/": "#FE5F7E"
+    ".*": "#ED734D"
