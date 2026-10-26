@@ -52,7 +52,7 @@ Omarchy generates every app's theme from `colors.toml`; the theme ships its own 
 - `neovim.lua`: aether with the shared editor syntax (below).
 - `btop.theme`: graphs run from Lucy cyan to the key-art pink-red; each panel outline has its own dimmed colour.
 - `icons.theme`: Yaru-blue-dark, after Lucy's hair.
-- `unlock.png`: Lucy's moon, a neon crescent crossed by the rocket's flare, for the boot screen. Apply it with `omarchy-plymouth-set-by-theme edgerunners`.
+- `unlock.png`: Lucy's moon over Night City, a glitched neon crescent with the rocket climbing toward it, for the login and boot screens. Apply it with `omarchy-plymouth-set-by-theme edgerunners`. `art/build.py` draws it, along with `preview-unlock.png` and the fastfetch logo.
 - `preview.png`, `preview-unlock.png`: the theme picker images.
 - `backgrounds/`: fan art and stills of Lucy: the rocket launch, a rainy window over Night City, the red key-art portrait, and Lucy at a window under the full moon as the rocket climbs ([Wallhaven jxg7x5](https://wallhaven.cc/w/jxg7x5)). The bar is often transparent, so each carries a soft dark band at the top that keeps bar text above 4.9:1. Cycle them with `omarchy theme bg next`. The wallpapers are other people's work, collected from wallpaper sites; their artists are unknown to me, and they stay theirs.
 
@@ -84,7 +84,7 @@ Omarchy doesn't theme these apps, so the theme ships a file for each and `hooks/
 | --- | --- | --- |
 | `lazygit.yml` | `hooks/lazygit` | `export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/theme.yml"` in `~/.config/uwsm/env` and `~/.bashrc` |
 | `zen.css` (Zen Browser) | `hooks/zen-theme` | none; the hook enables `userChrome.css` itself. Restart Zen after a theme change. |
-| `fastfetch-logo.txt` (Lucy's moon over Night City) | `hooks/fastfetch-logo` | point `logo.source` in `~/.config/fastfetch/config.jsonc` at `~/.config/fastfetch/logo.txt`, with colours `{ "1": "red", "2": "cyan" }` |
+| `fastfetch-logo.txt` (the same scene as pixel art, in 24-bit colour) | `hooks/fastfetch-logo` | point `logo.source` in `~/.config/fastfetch/config.jsonc` at `~/.config/fastfetch/logo.txt` (type `file`); needs a true-colour terminal |
 | `gtk-accent.theme` (teal accent for Nautilus and GTK4 apps) | `hooks/gtk-accent` | none |
 
 Install a hook with `omarchy hook install theme-set hooks/<name>`, then re-apply the theme.
