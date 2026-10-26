@@ -54,7 +54,7 @@ Omarchy generates every app's theme from `colors.toml`; the theme ships its own 
 - `icons.theme`: Yaru-blue-dark, after Lucy's hair.
 - `unlock.png`: Lucy's moon, a neon crescent crossed by the rocket's flare, for the boot screen. Apply it with `omarchy-plymouth-set-by-theme edgerunners`.
 - `preview.png`, `preview-unlock.png`: the theme picker images.
-- `backgrounds/`: fan art and stills of Lucy: the rocket launch, a rainy window over Night City, and the red key-art portrait (with and without a dark top band). The bar is often transparent, so the first three carry a soft dark band at the top that keeps bar text above 4.9:1. Cycle them with `omarchy theme bg next`. The wallpapers are other people's work, collected from wallpaper sites; their artists are unknown to me, and they stay theirs.
+- `backgrounds/`: fan art and stills of Lucy: the rocket launch, a rainy window over Night City, the red key-art portrait, and Lucy at a window under the full moon as the rocket climbs ([Wallhaven jxg7x5](https://wallhaven.cc/w/jxg7x5)). The bar is often transparent, so each carries a soft dark band at the top that keeps bar text above 4.9:1. Cycle them with `omarchy theme bg next`. The wallpapers are other people's work, collected from wallpaper sites; their artists are unknown to me, and they stay theirs.
 
 ### Editors
 
