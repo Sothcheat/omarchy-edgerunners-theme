@@ -122,10 +122,14 @@ def main():
         lines.append(line)
     colors = "\n".join(lines) + "\n"
 
+    # Dim by scaling RGB, not -modulate: HSL counts near-white pixels (Lucy's
+    # hair) as fully saturated, so lowering their lightness turns JPEG noise
+    # into rainbow speckles.
     bg = subprocess.run(
         ["magick", str(THEME / "backgrounds" / "01-edgerunners-rocket.jpg"),
          "-resize", "2560x1440^", "-gravity", "center", "-extent", "2560x1440",
-         "-modulate", "55,85", "-quality", "88", "jpg:-"],
+         "-channel", "RGB", "-evaluate", "multiply", "0.55", "+channel",
+         "-quality", "90", "jpg:-"],
         check=True, capture_output=True).stdout
 
     out = HERE / "telegram"
