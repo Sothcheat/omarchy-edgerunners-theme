@@ -53,6 +53,7 @@ Omarchy generates every app's theme from `colors.toml`; the theme ships its own 
 - `btop.theme`: graphs run from Lucy cyan to the key-art pink-red; each panel outline has its own dimmed colour.
 - `icons.theme`: Yaru-blue-dark, after Lucy's hair.
 - `unlock.png`: Lucy's moon over Night City, a glitched neon crescent with the rocket climbing toward it, for the login and boot screens. Apply it with `omarchy-plymouth-set-by-theme edgerunners`. `art/build.py` draws it, along with `preview-unlock.png` and the fastfetch logo.
+- `bar-logo.png`: a small neon crescent for the bar's menu button. Omarchy's own button doesn't read it; it's for a bar widget that shows the current theme's `bar-logo.png` (the author's is [`ohmylucifer.menu-button`](https://github.com/Sothcheat/omarchy-dotfiles)), and other setups simply ignore it.
 - `preview.png`, `preview-unlock.png`: the theme picker images.
 - `backgrounds/`: fan art and stills of Lucy: the rocket launch, a rainy window over Night City, the red key-art portrait, and Lucy at a window under the full moon as the rocket climbs ([Wallhaven jxg7x5](https://wallhaven.cc/w/jxg7x5)). The bar is often transparent, so each carries a soft dark band at the top that keeps bar text above 4.9:1. Cycle them with `omarchy theme bg next`. The wallpapers are other people's work, collected from wallpaper sites; their artists are unknown to me, and they stay theirs.
 

@@ -5,7 +5,7 @@ climbing toward it.
     python3 art/build.py
 
 Writes unlock.png (login and boot logo, an SVG rendered by rsvg-convert),
-preview-unlock.png, and fastfetch-logo.txt: the same scene as pixel art in
+preview-unlock.png, bar-logo.png (the menu button's icon), and fastfetch-logo.txt: the same scene as pixel art in
 24-bit half-blocks, which fastfetch's `file` logo type passes through."""
 import math
 import pathlib
@@ -146,6 +146,25 @@ def scene(W, H, s):
             + "\n".join(g) + "</svg>")
 
 
+def bar_logo(size=96):
+    """The bar's menu icon: the crescent alone, glow baked in (Qt's SVG renderer
+    has no blur filter)."""
+    c = size / 2
+    r = size * 0.36
+    moon = crescent(c - size * 0.04, c, r, r * 0.42, -r * 0.28, r * 0.86)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 {size} {size}">
+<defs>
+  <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="{CYAN}"/><stop offset="0.5" stop-color="{BLUE}"/><stop offset="1" stop-color="{VIOLET}"/>
+  </linearGradient>
+  <filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="{size * 0.045:.1f}"/></filter>
+</defs>
+<path d="{moon}" fill="url(#f)" opacity="0.85" filter="url(#b)"/>
+<path d="{moon}" fill="url(#f)"/>
+<path d="{moon}" fill="none" stroke="{CYAN_HI}" stroke-opacity="0.8" stroke-width="{size * 0.025:.1f}"/>
+</svg>'''
+
+
 def hexrgb(h):
     return tuple(int(h[i:i + 2], 16) for i in (1, 3, 5))
 
@@ -276,7 +295,10 @@ if __name__ == "__main__":
         svg = pathlib.Path(tmp) / "unlock.svg"
         svg.write_text(scene(1416, 854, 2.0))
         subprocess.run(["rsvg-convert", "-w", "708", "-h", "427", str(svg), "-o", str(OUT / "unlock.png")], check=True)
+        svg = pathlib.Path(tmp) / "bar-logo.svg"
+        svg.write_text(bar_logo())
+        subprocess.run(["rsvg-convert", str(svg), "-o", str(OUT / "bar-logo.png")], check=True)
     preview_unlock(OUT / "unlock.png", OUT / "preview-unlock.png")
     # fastfetch: 48 columns x 26 rows of half-blocks, drawn as pixel art.
     (OUT / "fastfetch-logo.txt").write_text(halfblocks(pixel_logo()))
-    print("wrote unlock.png, preview-unlock.png, fastfetch-logo.txt")
+    print("wrote unlock.png, preview-unlock.png, bar-logo.png, fastfetch-logo.txt")
