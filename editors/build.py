@@ -18,8 +18,9 @@ no two kinds of token read alike, with Edgerunners colours in each slot:
     numbers, template ${}           neon violet   (purple)
     parameters                      HOTEL orange, italic
     this / self                     neon red, italic
+    properties, object keys         neon pink (One Dark gives them a hue too)
     comments                        rain haze, italic
-    variables, properties           lavender (plain text)
+    variables                       lavender (plain text)
 
 The UI keeps neon red for errors only; focus, selection and the active tab
 use the Lucy cyan, as the Omarchy shell does.
@@ -44,6 +45,10 @@ C = {
     "comment": P["muted"],
     "punct": P["dark_foreground"],
     "var": FG,
+    # Neon pink, between keyword red and number violet (OKLCH 0.78 0.16 350):
+    # 9.0:1 on bg, 14.8 ΔE from keywords, 15.8 from numbers. ANSI bright red
+    # was too pale to tell from plain text.
+    "property": "#FE8CC5",
 }
 UI = {
     "bg": BG,
@@ -505,15 +510,16 @@ def vscode_token_colors():
         scope(["variable.parameter", "meta.parameter variable", "entity.name.variable.parameter",
                "variable.parameter.function"], c["param"], "italic"),
 
-        # Variables, properties: plain lavender; punctuation dimmer.
-        scope(["variable", "variable.other", "variable.other.readwrite", "variable.other.property",
-               "variable.other.object.property", "meta.object-literal.key", "support.variable.property",
-               "entity.name.variable", "variable.other.constant.property"], c["var"]),
+        # Variables: plain lavender. Properties and object keys: neon pink.
+        # Punctuation dimmer.
+        scope(["variable", "variable.other", "variable.other.readwrite", "entity.name.variable"], c["var"]),
+        scope(["variable.other.property", "variable.other.object.property", "meta.object-literal.key",
+               "support.variable.property", "variable.other.constant.property"], c["property"]),
         scope(["punctuation", "meta.brace", "punctuation.separator", "punctuation.terminator",
                "punctuation.accessor", "meta.delimiter"], c["punct"]),
 
         # CSS
-        scope(["support.type.property-name.css", "support.type.vendored.property-name"], c["var"]),
+        scope(["support.type.property-name.css", "support.type.vendored.property-name"], c["property"]),
         scope(["entity.other.attribute-name.class.css", "entity.other.attribute-name.id.css",
                "entity.other.attribute-name.pseudo-class", "entity.other.attribute-name.pseudo-element"],
               c["function"]),
@@ -562,9 +568,9 @@ def vscode_semantic():
         "parameter": {"foreground": c["param"], "italic": True},
         "variable": c["var"],
         "variable.readonly.defaultLibrary": c["storage"],
-        "property": c["var"],
+        "property": c["property"],
         "enumMember": c["storage"],
-        "event": c["var"],
+        "event": c["property"],
         "label": c["string"],
         "selfKeyword": {"foreground": c["keyword"], "italic": True},
         "*.deprecated": {"strikethrough": True},
@@ -583,7 +589,7 @@ def build_vscode(out):
         "semanticTokenColors": vscode_semantic(),
     }
     (out / "edgerunners-color-theme.json").write_text(json.dumps(theme, indent=2) + "\n")
-    version = "1.0.0"
+    version = "1.0.2"
     pkg = {
         "name": "edgerunners-theme",
         "displayName": "Edgerunners",
@@ -706,7 +712,7 @@ def zed_syntax():
         "function.kwargs": hl(c["param"], "italic"),
         "label": hl(c["string"]),
         "variable": hl(c["var"]),
-        "property": hl(c["var"]),
+        "property": hl(c["property"]),
         "punctuation": hl(c["punct"]),
         "punctuation.bracket": hl(c["punct"]),
         "punctuation.delimiter": hl(c["punct"]),

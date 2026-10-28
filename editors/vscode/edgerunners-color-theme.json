@@ -618,15 +618,22 @@
         "variable",
         "variable.other",
         "variable.other.readwrite",
+        "entity.name.variable"
+      ],
+      "settings": {
+        "foreground": "#DDDDF7"
+      }
+    },
+    {
+      "scope": [
         "variable.other.property",
         "variable.other.object.property",
         "meta.object-literal.key",
         "support.variable.property",
-        "entity.name.variable",
         "variable.other.constant.property"
       ],
       "settings": {
-        "foreground": "#DDDDF7"
+        "foreground": "#FE8CC5"
       }
     },
     {
@@ -648,7 +655,7 @@
         "support.type.vendored.property-name"
       ],
       "settings": {
-        "foreground": "#DDDDF7"
+        "foreground": "#FE8CC5"
       }
     },
     {
@@ -843,9 +850,9 @@
     },
     "variable": "#DDDDF7",
     "variable.readonly.defaultLibrary": "#05A5BF",
-    "property": "#DDDDF7",
+    "property": "#FE8CC5",
     "enumMember": "#05A5BF",
-    "event": "#DDDDF7",
+    "event": "#FE8CC5",
     "label": "#CBA501",
     "selfKeyword": {
       "foreground": "#FE5F7E",

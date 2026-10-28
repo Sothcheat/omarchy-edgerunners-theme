@@ -70,6 +70,7 @@ Omarchy generates every app's theme from `colors.toml`; the theme ships its own 
 | Strings | rocket gold |
 | Numbers, template `${}` | neon violet |
 | Parameters | HOTEL orange, italic |
+| Properties, object keys | neon pink |
 | `this` / `self` | neon pink-red, italic |
 | Comments | rain haze, italic |
 
