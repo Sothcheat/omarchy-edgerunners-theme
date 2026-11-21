@@ -159,3 +159,21 @@
   background-color: #151635 !important;
   backdrop-filter: none !important;
 }
+
+/* Each space also gets its own text colour and colour scheme, worked out
+ * from its gradient and set inline on the space element; a light gradient
+ * makes the space name dark on the navy sidebar. Pin them per space. */
+zen-workspace {
+  --toolbox-textcolor: #ddddf7 !important;
+  --zen-primary-color: #05a5bf !important;
+  color-scheme: dark !important;
+}
+
+/* The space header's hover fill is an absolutely positioned ::before. Zen's
+ * own fill is see-through, but this theme's is solid, so it covered the space
+ * name and the actions button (only the chevron, in its own stack, showed).
+ * Positioning them paints them above the fill. */
+.zen-current-workspace-indicator-name,
+.zen-current-workspace-indicator .zen-workspaces-actions {
+  position: relative;
+}
